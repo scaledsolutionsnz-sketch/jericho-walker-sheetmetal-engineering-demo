@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leave a Review | Jericho Walker Sheetmetal Engineering</title>
+<meta name="description" content="Leave a review for Jericho Walker Sheetmetal Engineering, Christchurch." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314161a'/%3E%3Ctext x='32' y='46' font-family='Arial Black,Arial' font-size='40' font-weight='900' fill='%23ff5a1f' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Sofia+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav scrolled">
+  <a class="nav__brand" href="index.html" aria-label="Home">
+    <span class="nav__mark">J</span>
+    <span class="nav__name">Jericho Walker<span>Sheetmetal Engineering</span></span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a class="btn btn--primary nav__cta" href="tel:+6433650226">03 365 0226</a>
+  </nav>
+  <button class="nav__burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+
+<section class="subhero">
+  <div class="wrap">
+    <p class="eyebrow">Your feedback</p>
+    <h1>Leave us a review</h1>
+    <p>How did we do on your job? Tap a rating below — it takes about thirty seconds.</p>
+  </div>
+</section>
+
+<section class="legal">
+  <div class="wrap rating-pick">
+    <h2 style="text-align:center;">How was your experience?</h2>
+    <div class="stars-row" id="stars">
+      <button class="star-btn" data-v="1" aria-label="1 star">★</button>
+      <button class="star-btn" data-v="2" aria-label="2 stars">★</button>
+      <button class="star-btn" data-v="3" aria-label="3 stars">★</button>
+      <button class="star-btn" data-v="4" aria-label="4 stars">★</button>
+      <button class="star-btn" data-v="5" aria-label="5 stars">★</button>
+    </div>
+    <p class="rating-hint">Tap the stars to rate your experience</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__bottom" style="border-top:0;justify-content:center;">
+      <p>© <span id="year">2026</span> Jericho Walker Sheetmetal Engineering · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 4-5 stars -> Google review; 1-3 stars -> private feedback page
+  var GOOGLE_REVIEW_URL = "https://g.page/r/PLACEHOLDER";
+  var stars = document.querySelectorAll(".star-btn");
+  stars.forEach(function (btn) {
+    btn.addEventListener("mouseenter", function () {
+      var v = +btn.dataset.v;
+      stars.forEach(function (s) { s.classList.toggle("lit", +s.dataset.v <= v); });
+    });
+    btn.addEventListener("click", function () {
+      var v = +btn.dataset.v;
+      if (v >= 4) window.location.href = GOOGLE_REVIEW_URL;
+      else window.location.href = "private.html?rating=" + v;
+    });
+  });
+  document.getElementById("stars").addEventListener("mouseleave", function () {
+    stars.forEach(function (s) { s.classList.remove("lit"); });
+  });
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

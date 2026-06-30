@@ -1,4 +1,4 @@
-/* Jericho Walker Sheetmetal Engineering — site behaviour */
+/* Metal World — site behaviour */
 (function () {
   "use strict";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
